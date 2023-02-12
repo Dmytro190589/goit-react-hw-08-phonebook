@@ -1,0 +1,17 @@
+ul,
+p,
+h1,
+h2 {
+  padding: 5px;
+  margin: 0px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 360px;
+  margin: auto;
+  padding: 2rem;
+}
