@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import authOperations from 'redux/auth/operations'
 import './Registration.module.css'
 
 export default function Registration() {
@@ -28,7 +29,7 @@ export default function Registration() {
     };
     const handleSubmit = e => {
         e.preventDefault();
-        dispatch()
+        dispatch(authOperations.register({ name, email, password }))
         setEmail('');
         setName('');
         setPassword('');

@@ -1,24 +1,20 @@
-.link {
-  color: black;
-  padding: 10px;
-  font-size: 30px;
-  text-decoration: none;
-  font-family: 'Abel', sans-serif;
-  font-weight: 500;
-}
-
-.link.active {
-  color: orangered;
+.wrapper {
+  display: flex;
+  gap: 5px;
+  justify-content: space-between;
+  align-items: center;
 }
 .header {
   padding: 20px;
   box-shadow: 0px 3px 10px #4b4447;
   background-color: #f1f2f2;
-  display: flex;
 }
 nav {
   display: flex;
-  gap: 15px;
-  /* align-items: baseline; */
+  align-items: flex-end;
   justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: auto;
+  min-height: 70px;
+  margin: 0 auto;
 }
