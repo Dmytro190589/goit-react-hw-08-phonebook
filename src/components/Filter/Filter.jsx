@@ -1,4 +1,4 @@
-import { setFilter } from 'redux/filter';
+import { setFilter } from 'redux/contacts/filter';
 import { useDispatch } from 'react-redux';
 
 const Filter = () => {

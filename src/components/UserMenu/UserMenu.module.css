@@ -1,0 +1,23 @@
+.wrapper {
+  margin-left: auto;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.email {
+  margin: 0;
+  padding: 9px;
+  color: currentColor;
+  border: 1px solid #666666;
+  border-radius: 7px;
+}
+
+.btn {
+  padding: 7px 4px 3px 7px;
+  background: none;
+  width: auto;
+  color: currentColor;
+  border: 1px solid #666666;
+  border-radius: 7px;
+}

@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContacts } from 'redux/operations';
+import { addContacts } from 'redux/contacts/operations';
 import css from './Contacts.module.css';
-import { getContacts } from 'redux/selectors';
-
+import { getContacts } from 'redux/contacts/selectors';
 export default function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
@@ -28,9 +27,9 @@ export default function ContactForm() {
   };
   const addContact = evt => {
     evt.preventDefault();
-    contacts.find(e => e.name === name) ?
-    alert(`${name} is already in contacts`) :
-    dispatch(addContacts({ name, number}));
+    contacts.find(e => e.name === name)
+      ? alert(`${name} is already in contacts`)
+      : dispatch(addContacts({ name, number }));
     setName('');
     setNumber('');
   };
