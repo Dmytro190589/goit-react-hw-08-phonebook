@@ -7,7 +7,6 @@ import css from './Navigation.module.css';
 
 export const Navigation = () => {
     const isLoggedIn = useSelector(selectedIsLoggedIn)
-    console.log(isLoggedIn);
     return (
         <header className={css.header}>
             <nav>
