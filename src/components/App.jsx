@@ -10,6 +10,8 @@ import { PulseLoader } from 'react-spinners';
 import Home from './Pages/Home/Home';
 import LogIn from './Pages/LogIn/LogIn';
 import Registration from './Pages/Registration/Registration';
+import PublicRoute from './PublicRoute';
+import PrivateRoute from './PrivateRoute';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -31,9 +33,30 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="register" element={<Registration />} />
-            <Route path="contacts" element={<Contacts />} />
-            <Route path="login" element={<LogIn />} />
+            <Route
+              path="register"
+              element={
+                <PublicRoute>
+                  <Registration />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="contacts"
+              element={
+                <PrivateRoute>
+                  <Contacts />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="login"
+              element={
+                <PublicRoute>
+                  <LogIn />
+                </PublicRoute>
+              }
+            />
             <Route path="*" element={<Home />} />
           </Route>
         </Routes>
