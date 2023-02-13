@@ -36,25 +36,25 @@ export default function App() {
             <Route
               path="register"
               element={
-                <PublicRoute>
+                // <PublicRoute>
                   <Registration />
-                </PublicRoute>
+                // </PublicRoute>
               }
             />
             <Route
               path="contacts"
               element={
-                <PrivateRoute>
+                // <PrivateRoute>
                   <Contacts />
-                </PrivateRoute>
+                // </PrivateRoute>
               }
             />
             <Route
               path="login"
               element={
-                <PublicRoute>
+                // <PublicRoute>
                   <LogIn />
-                </PublicRoute>
+                // </PublicRoute>
               }
             />
             <Route path="*" element={<Home />} />
