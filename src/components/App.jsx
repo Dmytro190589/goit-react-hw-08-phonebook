@@ -6,12 +6,14 @@ import authOperations from 'redux/auth/operations';
 import { selectedIsCurrent } from 'redux/auth/selectors';
 import Layout from './Layout/Layout';
 import { PulseLoader } from 'react-spinners';
-import Home from '../Pages/Home/Home';
-import LogIn from '../Pages/LogIn/LogIn';
-import Registration from '../Pages/Registration/Registration';
 import PrivateRoute from './PrivateRoute';
-import Contacts from 'Pages/Contacts/Contacts';
 import PublicRoute from './PublicRoute';
+import { lazy } from 'react';
+
+const Home = lazy(() => import('Pages/Home/Home'));
+const Contacts = lazy(() => import('Pages/Contacts/Contacts'));
+const Registration = lazy(() => import('Pages/Registration/Registration'));
+const LogIn = lazy(() => import('Pages/LogIn/LogIn'));
 
 export default function App() {
   const dispatch = useDispatch();

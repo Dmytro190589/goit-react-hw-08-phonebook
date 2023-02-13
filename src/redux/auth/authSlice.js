@@ -18,7 +18,6 @@ const handlePending = (state) => {
 }
 
 const handleRejected = (state, { payload }) => {
-    state.isLoggedIn = false;
     state.error = payload;
     state.isLoading = false;
 }
@@ -28,13 +27,7 @@ const authSlice = createSlice({
     initialState,
     extraReducers: {
         [authOperations.register.pending]: handlePending,
-        [authOperations.logIn.fulfilled](state, { payload }) {
-            state.isLoading = false;
-            state.user = payload.user;
-            state.error = null;
-            state.token = payload.token;
-            state.isLoggedIn = true;
-        },
+
         [authOperations.register.fulfilled](state, { payload }) {
             state.isLoading = false;
             state.user = payload.user;
@@ -43,9 +36,15 @@ const authSlice = createSlice({
             state.isLoggedIn = true;
         },
         [authOperations.register.rejected]: handleRejected,
+        [authOperations.logIn.pending]: handlePending,
+        [authOperations.logIn.fulfilled](state, { payload }) {
+            state.isLoading = false;
+            state.user = payload.user;
+            state.error = null;
+            state.token = payload.token;
+            state.isLoggedIn = true;
+        },
     },
-    [authOperations.logIn.pending]: handlePending,
-
     [authOperations.logIn.rejected]: handleRejected,
     [authOperations.logOut.pending]: handlePending,
     [authOperations.logOut.fulfilled](state) {
@@ -54,7 +53,10 @@ const authSlice = createSlice({
         state.token = null;
         state.isLoggedIn = false;
     },
-    [authOperations.logOut.rejected]: handleRejected,
+    [authOperations.logOut.rejected](state, { payload }) {
+        state.error = payload;
+        state.isLoggedIn = false;
+    },
     [authOperations.current.pending](state) {
         state.isLoading = true;
         state.error = null;
@@ -67,7 +69,6 @@ const authSlice = createSlice({
         state.isCurrentUser = false;
     },
     [authOperations.current.rejected](state, { payload }) {
-        state.isCurrentUser = false;
         state.isLoading = false;
         state.error = payload
     }
