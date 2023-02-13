@@ -5,7 +5,7 @@ import { Routes } from 'react-router-dom';
 import authOperations from 'redux/auth/operations';
 import { selectedIsCurrent } from 'redux/auth/selectors';
 import Layout from './Layout/Layout';
-// import Contacts from './Pages/Contacts/Contacts';
+import Contacts from './Pages/Contacts/Contacts';
 import { PulseLoader } from 'react-spinners';
 import Home from './Pages/Home/Home';
 import LogIn from './Pages/LogIn/LogIn';
@@ -32,7 +32,7 @@ export default function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="register" element={<Registration />} />
-            {/* <Route path="contacts" element={<Contacts />} /> */}
+            <Route path="contacts" element={<Contacts />} />
             <Route path="login" element={<LogIn />} />
             <Route path="*" element={<Home />} />
           </Route>
