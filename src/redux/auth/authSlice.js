@@ -64,10 +64,10 @@ const authSlice = createSlice({
 
     },
     [authOperations.logOut.fulfilled](state) {
-        state.user = { name: null, email: null };
         state.isLoading = false;
         state.token = null;
         state.isLoggedIn = false;
+        state.user = { name: '', email: '' };
     },
     [authOperations.logOut.rejected](state, { payload }) {
         state.error = payload;
