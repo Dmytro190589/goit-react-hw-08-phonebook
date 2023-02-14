@@ -2,24 +2,25 @@ import ContactForm from "components/ContactsForm/ContactsForm";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Filter from "../../components/Filter/Filter";
-import { fetchContacts} from "redux/contacts/operations";
+import { currentContact } from "redux/contacts/operations";
 import { getContacts, getError, getFilter, getIsLoading } from "redux/contacts/selectors";
 import css from './Contacts.module.css'
 import { PulseLoader } from 'react-spinners';
 import ContactList from "components/ContactsList/ContactsList";
+const override = {
+    position: 'fixed',
+    top: '50%',
+    left: '50%',
+    transform: 'translateX(-50%) translateY(-50%)',
+};
 
 export default function Contacts() {
-    const override = {
-        position: 'fixed',
-        top: '50%',
-        left: '50%',
-        transform: 'translateX(-50%) translateY(-50%)',
-    };
+
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchContacts());
+        dispatch(currentContact());
     }, [dispatch]);
 
     const contacts = useSelector(getContacts);
