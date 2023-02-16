@@ -45,6 +45,7 @@ export default function LogIn() {
                     required
                     onChange={handleChange}
                     value={password}
+                    autoComplete='off'
                     name="password" />
             </label>
             <button type="submit">Log in</button>

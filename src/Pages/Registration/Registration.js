@@ -41,7 +41,7 @@ export default function Registration() {
                 <input type="text"
                     required
                     name="name"
-                    autoComplete="off"
+                    autoComplete='off'
                     onChange={handleChange}
                     value={name}
                 />
@@ -51,16 +51,17 @@ export default function Registration() {
                 <input type="email"
                     required
                     name="email"
+                    autoComplete='off'
                     onChange={handleChange}
                     value={email}
-                    autoComplete="off" />
+                     />
             </label>
             <label>
                 Enter your password
                 <input type="password"
                     required
                     name="password"
-                    autoComplete="off"
+                    autoComplete='current-password'
                     value={password}
                     onChange={handleChange}
                 />
