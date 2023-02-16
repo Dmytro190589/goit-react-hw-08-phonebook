@@ -4,6 +4,7 @@ import { fetchContacts, addContacts, deleteContact, currentContact } from "./ope
 
 const handlePending = (state) => {
     state.isLoading = true;
+    state.error = null;
 }
 
 const handleRejected = (state, { payload }) => {
@@ -43,14 +44,15 @@ const contacts = createSlice({
         [fetchContacts.rejected]: handleRejected,
         [addContacts.rejected]: handleRejected,
         [deleteContact.rejected]: handleRejected,
+        [currentContact.pending]: handlePending,
+        [currentContact.fulfilled](state, { payload }) {
+            state.isLoading = false;
+            state.error = null;
+            state.items = payload;
+        },
+        [currentContact.rejected]: handleRejected,
     },
-    [currentContact.pending]:handlePending,
-    [currentContact.fulfilled](state, {payload}) {
-        state.isLoading = false;
-        state.error = null;
-        state.items = payload;
-    },
-    [currentContact.rejected]:handleRejected,
+
 })
 export const contactsReducer = contacts.reducer;
 
