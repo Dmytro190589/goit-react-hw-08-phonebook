@@ -53,18 +53,18 @@ const logOut = createAsyncThunk(
 );
 const current = createAsyncThunk(
     'auth/current',
-    async (_, {rejectWithValue}) => {
+    async (_, thunkAPI) => {
         const state = thunkAPI.getState();
         const persistedToken = state.auth.token;
         if (!persistedToken) {
-            return rejectWithValue();
+            return thunkAPI.rejectWithValue();
         }
         token.set(persistedToken);
         try {
             const { data } = await axios.get('/users/current');
             return data;
         } catch (error) {
-            return rejectWithValue(error.message);
+            return thunkAPI.rejectWithValue(error.message);
         }
     }
 );
