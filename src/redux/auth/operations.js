@@ -65,7 +65,6 @@ const current = createAsyncThunk(
             const { data } = await axios.get('/users/current');
             return data;
         } catch (error) {
-            alert('Time is out, please log in again.');
             return thunkAPI.rejectWithValue(error.message);
         }
     }
