@@ -14,34 +14,35 @@ const token = {
 
 const register = createAsyncThunk(
     'auth/signup',
-    async (user, {rejectWithValue}) => {
+    async (user, { rejectWithValue }) => {
         try {
             const { data } = await axios.post('/users/signup', user);
             token.set(data.token);
             return data;
         } catch (error) {
-           return rejectWithValue(error.message);
+            alert('Something went wrong! Try again please.')
+            return rejectWithValue(error.message);
         }
     }
 );
 
 const logIn = createAsyncThunk(
     'auth/login',
-    async (user, {rejectWithValue}) => {
+    async (user, { rejectWithValue }) => {
         try {
             const { data } = await axios.post('/users/login', user);
             token.set(data.token);
             return data;
         } catch (error) {
             alert("Please check your email or password.");
-           return rejectWithValue(error.message);
+            return rejectWithValue(error.message);
         }
     }
 );
 
 const logOut = createAsyncThunk(
     'auth/logout',
-    async (_, {rejectWithValue}) => {
+    async (_, { rejectWithValue }) => {
         try {
             await axios.post('/users/logout');
             token.unset();
@@ -64,6 +65,7 @@ const current = createAsyncThunk(
             const { data } = await axios.get('/users/current');
             return data;
         } catch (error) {
+            alert('Time is out, please log in again.');
             return thunkAPI.rejectWithValue(error.message);
         }
     }
